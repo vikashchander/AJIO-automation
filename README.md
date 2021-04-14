@@ -1,1 +1,1 @@
-## Ajio Automation with puppeteer
+## AJIO Automation with puppeteer
