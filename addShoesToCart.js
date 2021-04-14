@@ -5,7 +5,7 @@ const data = process.env.DATA;
 const website =process.env.LINK
 try {
   (async () => {
-    const browser = await puppeteer.launch({ headless: false, executablePath: '/path/to/Chrome'})
+    const browser = await puppeteer.launch({ headless: false})
     const page = await browser.newPage()
     await page.setViewport({ width: 1280, height: 800 })
     await page.goto(website, { waitUntil: 'networkidle2' })
