@@ -1,6 +1,6 @@
 
 const puppeteer = require('puppeteer')
-const screenshot = 'shopping.png'
+const screenshot = 'shoppingscreen.png'
 try {
   (async () => {
     const browser = await puppeteer.launch({ headless: false })

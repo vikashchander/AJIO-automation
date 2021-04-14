@@ -24,9 +24,7 @@ try {
             }
         }));
    console.log(storeLinks);
-   fs.writeFile('./data.json', JSON.stringify(storeLinks), err => err ? console.log(err): null);
-    await page.screenshot({ path: screenshot }  )
-    console.log('See screen shot: ' + screenshot)
+   fs.writeFile('./data/storeLinks.json', JSON.stringify(storeLinks), err => err ? console.log(err): null);
   })()
 } catch (err) {
   console.error(err)
