@@ -1,14 +1,16 @@
 
+require('dotenv').config()
 const puppeteer = require('puppeteer')
-const screenshot = 'shoppingscreen.png'
+const data = process.env.DATA;
+const website =process.env.LINK
 try {
   (async () => {
     const browser = await puppeteer.launch({ headless: false })
     const page = await browser.newPage()
     await page.setViewport({ width: 1280, height: 800 })
-    await page.goto('https://www.ajio.com/', { waitUntil: 'networkidle2' })
+    await page.goto(website, { waitUntil: 'networkidle2' })
     await page.waitForSelector('input[name="searchVal"]');
-    await page.type('input[name="searchVal"]',"shoes");
+    await page.type('input[name="searchVal"]',data);
     await  page.waitForSelector('button.rilrtl-button');
     await page.keyboard.press('Enter');
     await page.waitForSelector('a.rilrtl-products-list__link');
@@ -37,9 +39,7 @@ await page.waitForSelector('.btn-gold');
 
     })
   
-    await page.screenshot({ path: screenshot }  )
-    // await browser.close()
-    console.log('See screen shot: ' + screenshot)
+   
      Promise.all(allData).then(() => {
       browser.close();
     });

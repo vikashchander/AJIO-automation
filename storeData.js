@@ -1,14 +1,17 @@
 
 const puppeteer = require('puppeteer')
-const screenshot = 'shopping.png'
+require('dotenv').config()
 const fs = require("fs");
+const website =process.env.LINK
+const data = process.env.FILE_NAME
+
 try {
   (async () => {
     const browser = await puppeteer.launch({ headless: false,defaultViewport: false,
         args: ["--start-maximized"]})
     const page = await browser.newPage()
     await page.setViewport({ width: 1280, height: 800 })
-    await page.goto('https://www.ajio.com/', { waitUntil: 'networkidle2' })
+    await page.goto(website, { waitUntil: 'networkidle2' })
     await page.waitForSelector('input[name="searchVal"]');
     await page.type('input[name="searchVal"]',"shoes");
     await  page.waitForSelector('button.rilrtl-button');
@@ -24,7 +27,9 @@ try {
             }
         }));
    console.log(storeLinks);
-   fs.writeFile('./data/storeLinks.json', JSON.stringify(storeLinks), err => err ? console.log(err): null);
+   await fs.writeFile('./data/'+`${data}`, JSON.stringify(storeLinks), err => err ? console.log(err): null);
+   await page.close();
+    await browser.close();
   })()
 } catch (err) {
   console.error(err)
