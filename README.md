@@ -6,7 +6,7 @@
   </a>
 
   <p align="center">
-    Puppeteer  Using Online Shopping Website!
+     Online Shopping Website! Automation with Puppeteer  
     <br />
     <a href="https://devdocs.io/puppeteer/"><strong>Explore the docs »</strong></a>
     <br />
